@@ -1,0 +1,14 @@
+{
+    "patches": [
+        {
+            "label": "2025-12-02_00-09-11",
+            "content": "@@ -1,81 +0,0 @@\n-class Animal:%0A    def __init__(self, nome: str):%0A        self.__nome = nome%0A%0A    \n",
+            "lines": "0"
+        },
+        {
+            "label": "2025-12-02_00-12-43",
+            "content": "class Animal:\n    def __init__(self, nome: str):\n        self.__nome = nome\n\n    ",
+            "lines": "5"
+        }
+    ]
+}
