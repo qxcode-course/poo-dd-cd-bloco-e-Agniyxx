@@ -5,3 +5,6 @@
 2025-12-02 00:09:11, EXEC, v:1, k:poo@zoo, mode:LOCK, rate:100, size:0
 2025-12-02 00:12:43, EXEC, v:1, k:poo@zoo, mode:LOCK, rate:100, size:5
 2025-12-02 00:12:45, MOVE, v:1, k:poo@zoo, mode:BACK
+2025-12-02 13:15:43, MOVE, v:1, k:poo@zoo, mode:PICK
+2025-12-02 13:15:44, EXEC, v:1, k:poo@zoo, mode:LOCK, rate:100, size:9
+2025-12-02 13:24:04, MOVE, v:1, k:poo@zoo, mode:BACK

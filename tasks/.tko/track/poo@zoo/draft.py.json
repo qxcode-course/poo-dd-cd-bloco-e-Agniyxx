@@ -7,8 +7,13 @@
         },
         {
             "label": "2025-12-02_00-12-43",
-            "content": "class Animal:\n    def __init__(self, nome: str):\n        self.__nome = nome\n\n    ",
+            "content": "@@ -78,129 +78,4 @@\n     \n-def getNome(self):%0A        return self.__nome%0A%0A    def apresentar_nome(self, nome: str):%0A        print(%22Eu sou um(a) %7Bnome%7D%22)\n",
             "lines": "5"
+        },
+        {
+            "label": "2025-12-02_13-15-44",
+            "content": "class Animal:\n    def __init__(self, nome: str):\n        self.__nome = nome\n\n    def getNome(self):\n        return self.__nome\n\n    def apresentar_nome(self, nome: str):\n        print(\"Eu sou um(a) {nome}\")",
+            "lines": "9"
         }
     ]
 }
