@@ -12,8 +12,18 @@
         },
         {
             "label": "2025-12-02_13-15-44",
-            "content": "class Animal:\n    def __init__(self, nome: str):\n        self.__nome = nome\n\n    def getNome(self):\n        return self.__nome\n\n    def apresentar_nome(self, nome: str):\n        print(\"Eu sou um(a) {nome}\")",
+            "content": "@@ -11,23 +11,8 @@\n al:%0A\n-    nome: str%0A%0A\n     \n@@ -51,24 +51,26 @@\n        self.\n+__\n nome = nome%0A\n@@ -82,20 +82,12 @@\n def \n-apresentar_n\n+getN\n ome(\n@@ -105,99 +105,74 @@\n     \n-print(%22Eu sou um(a) %7B\n+return \n self.\n+__\n nome\n-%7D!%22)%0A    %0A    def fazerS\n+%0A%0A    def apresentar_n\n om\n+e\n (self\n-):%0A%0A    def mover(self\n+, nome: str\n ):%0A\n-%0A\n         \n@@ -151,28 +151,56 @@\n e(self, nome: str):%0A        \n+print(%22Eu sou um(a) %7Bnome%7D%22)\n",
             "lines": "9"
+        },
+        {
+            "label": "2025-12-04_11-08-38",
+            "content": "@@ -1,54 +1,32 @@\n-from abc import ABC, abstractmethod%0A%0Aclass Animal:\n+class Animal:%0A    nome: str%0A\n %0A   \n@@ -166,28 +166,8 @@\n    %0A\n-    @abstractmethod%0A\n     \n@@ -186,28 +186,16 @@\n (self):%0A\n-        pass\n %0A    def\n@@ -211,147 +211,8 @@\n lf):\n-%0A        pass%0A%0Aclass Lontra(Animal):%0A    def __init__(self, nome):%0A        super().__init__(nome)%0A        self.mover: str = mover%0A%0A        \n %0A%0A  \n",
+            "lines": "14"
+        },
+        {
+            "label": "2025-12-04_11-24-04",
+            "content": "from abc import ABC, abstractmethod\n\nclass Animal:\n    def __init__(self, nome: str):\n        self.nome = nome\n\n    def apresentar_nome(self):\n        print(\"Eu sou um(a) {self.nome}!\")\n    \n    @abstractmethod\n    def fazerSom(self):\n        pass\n    def mover(self):\n        pass\n\nclass Lontra(Animal):\n    def __init__(self, nome):\n        super().__init__(nome)\n        self.mover: str = mover\n\n        \n\n        ",
+            "lines": "23"
         }
     ]
 }
