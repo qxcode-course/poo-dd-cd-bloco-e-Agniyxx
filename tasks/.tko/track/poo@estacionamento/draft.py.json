@@ -1,0 +1,24 @@
+{
+    "patches": [
+        {
+            "label": "2025-12-08_13-00-39",
+            "content": "@@ -1,41 +1,4 @@\n-from abc import ABC, abstractmethod%0A%0A\n clas\n@@ -141,95 +141,10 @@\n def \n-__str__(self):%0A        pass%0A%0A    @abstractmethod%0A    def calcularValor(self):%0A        pass%0A\n+calcu \n",
+            "lines": "7"
+        },
+        {
+            "label": "2025-12-08_13-08-26",
+            "content": "@@ -70,21 +70,16 @@\n self, id\n-: str\n , entrad\n@@ -83,24 +83,14 @@\n rada\n-: int\n , tipo\n-: str\n ):%0A \n@@ -166,16 +166,53 @@\n = tipo%0A%0A\n+    def __str__(self):%0A        pass%0A%0A\n     @abs\n@@ -269,208 +269,4 @@\n ass%0A\n-%0A    def __str__(self):%0A        pass%0A%0Aclass Estacionamento(Veiculo):     %0A    def __init__(self, id, entrada, tipo):%0A        super().__init__(id, entrada, tipo)%0A%0A    def procurarVeiculo(self, id: str):%0A%0A \n",
+            "lines": "14"
+        },
+        {
+            "label": "2025-12-08_13-22-37",
+            "content": "@@ -1,8 +1,28 @@\n+@@ -1,458 +1,36 @@%0A-\n from abc\n@@ -48,18 +48,22 @@\n ctmethod\n-%0A%0A\n+%250A%250A\n class Ve\n@@ -68,17 +68,19 @@\n Veiculo:\n-%0A\n+%250A\n     def \n@@ -128,17 +128,19 @@\n o: str):\n-%0A\n+%250A\n         \n@@ -151,17 +151,19 @@\n .id = id\n-%0A\n+%250A\n         \n@@ -184,17 +184,19 @@\n  entrada\n-%0A\n+%250A\n         \n@@ -211,18 +211,22 @@\n o = tipo\n-%0A%0A\n+%250A%250A\n     @abs\n@@ -236,17 +236,19 @@\n ctmethod\n-%0A\n+%250A\n     def \n@@ -263,25 +263,27 @@\n Valor(self):\n-%0A\n+%250A\n         pass\n@@ -282,18 +282,22 @@\n     pass\n-%0A%0A\n+%250A%250A\n     def \n@@ -310,17 +310,19 @@\n _(self):\n-%0A\n+%250A\n         \n@@ -325,18 +325,22 @@\n     pass\n-%0A%0A\n+%250A%250A\n class Es\n@@ -366,17 +366,19 @@\n o):     \n-%0A\n+%250A\n     def \n@@ -411,17 +411,19 @@\n , tipo):\n-%0A\n+%250A\n         \n@@ -457,18 +457,22 @@\n a, tipo)\n-%0A%0A\n+%250A%250A\n     def \n@@ -506,58 +506,149 @@\n tr):\n-%0A%0A    def estacionar(self, veiculo: Veiculo):%0A        \n+%250A%250A %0A+@@ -451,55 +451,4 @@%250A :%25250A%25250A %250A-%0A    d%0A@@ -71,13 +71,15 @@%0A lo):%0A-%250A%0A+%25250A%0A         %0A@@ -74,12 +74,13 @@%0A :%25250A        %0A+%250A%0A\n",
+            "lines": "12"
+        },
+        {
+            "label": "2025-12-08_13-30-55",
+            "content": "from abc import ABC, abstractmethod\n\nclass Veiculo:\n    def __init__(self, id: str, entrada: int, tipo: str):\n        self.id = id\n        self.entrada = entrada\n        self.tipo = tipo\n\n    @abstractmethod\n    def calcularValor(self):\n        pass\n\n    def __str__(self):\n        pass\n\nclass Estacionamento(Veiculo):     \n    def __init__(self, id, entrada, tipo):\n        super().__init__(id, entrada, tipo)\n\n    def procurarVeiculo(self, id: str):\n\n    def estacionar(self, veiculo: Veiculo):\n        ",
+            "lines": "23"
+        }
+    ]
+}

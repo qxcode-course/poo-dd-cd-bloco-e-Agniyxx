@@ -53,10 +53,10 @@ class Pix(Pagamento):
     def processar(self):
        if self.valor <= self.limite:
            print("Valor recusado, saldo insuficiente")
-            self.limite -= self.valor
+                self.limite -= self.valor
         else:
             self.limite -= self.valor
-           print("Pagamento realizado para {self.banco} e chave {self.chave}")
+        print("Pagamento realizado para {self.banco} e chave {self.chave}")
 
 class Boleto(Pagamento):
     def __init__(self, codigo_barras:, vencimento: str, valor, descricao):
