@@ -6,6 +6,8 @@ class Veiculo:
         self.entrada = entrada
         self.tipo = tipo
 
+        
+
     @abstractmethod
     def calcularValor(self):
         pass
@@ -21,3 +23,21 @@ class Estacionamento(Veiculo):
 
     def estacionar(self, veiculo: Veiculo):
         
+    def pagar(self):
+    
+    def sair(self, id: str):
+    
+    def passarTempo(self, tempo: int):
+
+class Bike(Veiculo):
+    def __init__(self, id, entrada, tipo):
+        super().__init__(id, entrada, tipo)
+
+class Moto(Veiculo):
+    def __init__(self, id, entrada, tipo):
+        super().__init__(id, entrada, tipo)
+
+class Carro(Veiculo):
+    def __init__(self, id, entrada, tipo):
+        super().__init__(id, entrada, tipo)
+

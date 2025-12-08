@@ -17,7 +17,7 @@
         },
         {
             "label": "2025-12-08_13-30-55",
-            "content": "from abc import ABC, abstractmethod\n\nclass Veiculo:\n    def __init__(self, id: str, entrada: int, tipo: str):\n        self.id = id\n        self.entrada = entrada\n        self.tipo = tipo\n\n    @abstractmethod\n    def calcularValor(self):\n        pass\n\n    def __str__(self):\n        pass\n\nclass Estacionamento(Veiculo):     \n    def __init__(self, id, entrada, tipo):\n        super().__init__(id, entrada, tipo)\n\n    def procurarVeiculo(self, id: str):\n\n    def estacionar(self, veiculo: Veiculo):\n        ",
+            "content": "@@ -185,18 +185,8 @@\n po%0A%0A\n-        %0A%0A\n     \n@@ -502,433 +502,4 @@\n     \n-%0A    def pagar(self):%0A    %0A    def sair(self, id: str):%0A    %0A    def passarTempo(self, tempo: int):%0A%0Aclass Bike(Veiculo):%0A    def __init__(self, id, entrada, tipo):%0A        super().__init__(id, entrada, tipo)%0A%0Aclass Moto(Veiculo):%0A    def __init__(self, id, entrada, tipo):%0A        super().__init__(id, entrada, tipo)%0A%0Aclass Carro(Veiculo):%0A    def __init__(self, id, entrada, tipo):%0A        super().__init__(id, entrada, tipo)%0A%0A\n",
             "lines": "23"
         }
     ]
