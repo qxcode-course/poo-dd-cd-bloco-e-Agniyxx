@@ -1,7 +1,14 @@
 from abc import ABC, abstractmethod
 
+class MetodoPag(ABC):
+    @abstractmethod
+    def processar_pag(self, valor: float, descricao: str):
+        pass
+
+# valha fiquei gag
+
 class Pagamento:
-    def __init__(self, valor: int, descricao: str):
+    def __init__(self, valor: float, descricao: str):
         self.valor = valor
         self.descricao = descricao
 
@@ -11,10 +18,11 @@ class Pagamento:
     def validar_valor(self):
         if self.valor <= 0:
             raise ValueError("fail: valor inválido")
-
-    @abstractmethod
+        
     def processar(self):
-        pass
+        self.validar_valor()
+        self.resumo()
+        self.metodo.processar_pag() 
 
 class CartaoCredito(Pagamento):
     def __init__(self, num: int, nome: str, limite: float, valor: float, descricao: str):
@@ -35,7 +43,6 @@ class CartaoCredito(Pagamento):
             return
         self.limite -= self.valor
 
-
 def processar_pagamentos(pagamentos: list[Pagamento]):
     for pag in pagamentos:
         pag.validar_valor()
@@ -53,14 +60,20 @@ class Pix(Pagamento):
     def processar(self):
         if self.valor <= self.limite:
             print("Valor recusado, saldo insuficiente")
-        self.limite -= self.valor
+            self.limite -= self.valor
         else:
             self.limite -= self.valor
         print("Pagamento realizado para {self.banco} e chave {self.chave}")
 
 class Boleto(Pagamento):
-    def __init__(self, codigo_barras:, vencimento: str, valor, descricao):
+    def __init__(self, codigo_barras, vencimento: str, valor, descricao):
         super().__init__(valor, descricao)
+        self.codigo_barras = codigo_barras
+        self.vencimento = vencimento
 
     def processar(self):
-        
+        self.validar_valor()
+        self.resumo()
+        self.metodo.processar_pag()
+
+Metodo = 

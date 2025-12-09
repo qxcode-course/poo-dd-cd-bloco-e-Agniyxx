@@ -54,7 +54,7 @@ class Carro(Veiculo):
     
 class Estacionamento():     
     def __init__(self, veiculos: Veiculo, horaAtual: int):
-        self.veiculos = {}
+        self.veiculos = veiculos
         self.horaAtual = horaAtual
 
     def procurarVeiculo(self, id: str):
@@ -62,7 +62,7 @@ class Estacionamento():
 
     def estacionar(self, veiculo: Veiculo):
         if veiculo.getId() in self.veiculos:
-            print("Erro: ")
+            raise ValueError("")
         return
 
     def pagar(self):
@@ -83,14 +83,14 @@ class Estacionamento():
         print(f"Hora Atual: {self.horaAtual:02d}h")
 
     def __str__(self):
-        return super().__str__()
+        return f"Hora atual: {self.horaAtual}"
 
 def main():
-    estacionamento = Estacionamento()
+    estacionamento = Estacionamento(None, 0)
     while True:
 
         line = input()
-        print(f"$+{line}")
+        print(f"${line}")
         args = line.split()
 
         if args[0] == "end":
