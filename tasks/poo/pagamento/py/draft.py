@@ -2,27 +2,35 @@ from abc import ABC, abstractmethod
 
 class MetodoPag(ABC):
     @abstractmethod
-    def processar_pag(self, valor: float, descricao: str):
+    def processar_pag(self, valor: float):
         pass
 
-# valha fiquei gag
+class MetodoPix(MetodoPag):
+    def __init__(self, chave: str):
+        self.chave = chave
+    def processar_pag(self, valor):
+        print(f"pagando chave {self.chave}, valor {valor} com pix")
 
 class Pagamento:
     def __init__(self, valor: float, descricao: str):
         self.valor = valor
         self.descricao = descricao
+        self.metodo = metodo
+
+    def pagar(self):
+        self.metodo.processar_pag(self.valor)
 
     def resumo(self):
         return f" Pagamento de R$ {self.valor}: {self.descricao}"
 
     def validar_valor(self):
         if self.valor <= 0:
-            raise ValueError("fail: valor inválido")
+            raise ValueError("valor inválido")
         
     def processar(self):
         self.validar_valor()
         self.resumo()
-        self.metodo.processar_pag() 
+        self.metodo.processar_pag(self.valor, self.descricao) 
 
 class CartaoCredito(Pagamento):
     def __init__(self, num: int, nome: str, limite: float, valor: float, descricao: str):
@@ -52,10 +60,12 @@ def processar_pagamentos(pagamentos: list[Pagamento]):
             print(pag.get_limite())
 
 class Pix(Pagamento):
-    def __init__(self, chave: str, banco: str, valor, descricao):
+    def __init__(self, chave: str):
         super().__init__(valor, descricao)
-        self.chave = chave
-        self.banco = banco
+
+        self.chave: str = chave
+        def getChave(self):
+            return self.chave
 
     def processar(self):
         if self.valor <= self.limite:
@@ -75,5 +85,8 @@ class Boleto(Pagamento):
         self.validar_valor()
         self.resumo()
         self.metodo.processar_pag()
+        print(f"Boleto gerado. Aguerdando pagammento...")
 
-Metodo = 
+pix = MetodoPix("pinheiro@gmail.com")
+pag = Pagamento(22.0, "Entrada cinema", pix)
+pag.pagar()

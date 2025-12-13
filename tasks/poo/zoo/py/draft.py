@@ -1,15 +1,16 @@
 from abc import ABC, abstractmethod
 
-class Animal:
+class Animal(ABC):
     def __init__(self, nome: str):
         self.nome = nome
 
     def apresentar_nome(self):
-        print("Eu sou um(a) {self.nome}!")
+        print(f"Eu sou {self.nome}!")
     
     @abstractmethod
     def fazerSom(self):
         pass
+    @abstractmethod
     def mover(self):
         pass
 
@@ -18,43 +19,42 @@ class Lontra(Animal):
         super().__init__(nome)
         
     def fazerSom(self):
-        return super().fazerSom()
-    
+        print("ohohoh uhuh oh")
+
     def mover(self):
-        return super().mover()
+        print("nadar")
 
 class Furao(Animal):
     def __init__(self, nome):
         super().__init__(nome)
     
     def fazerSom(self):
-        return super().fazerSom()
+        print("haahha ahaha")
     
     def mover(self):
-        return super().mover()
+        print("correr, pular")
     
-class Rato(Animal):
+class Porquinho_da_india(Animal):
     def __init__(self, nome):
         super().__init__(nome)
 
     def fazerSom(self):
-        return super().fazerSom()
+        print("uiuiui uiiui")
     
     def mover(self):
-        return super().mover()
+        print("correr")
 
 def apresentar(animal: Animal):
     animal.apresentar_nome()
     animal.fazerSom()
     animal.mover()
-
-    print("{type(animal).__name__}")
+    print(f"{type(animal).__name__}")
 
 
 zoo: list[Animal] = [
-    Lontra("Otto")
-    Furao("Pan")
-    Rato("Stuart")
+    Lontra("Otto"),
+    Furao("Pan"),
+    Porquinho_da_india("Hilary"),
     ]
 
 print("# teste")
