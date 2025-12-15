@@ -1,38 +1,37 @@
 from abc import ABC, abstractmethod
 
 class MetodoPag(ABC):
-    @abstractmethod
-    def processar_pag(self, valor: float):
-        pass
-
-class MetodoPix(MetodoPag):
-    def __init__(self, chave: str):
-        self.chave = chave
-    def processar_pag(self, valor):
-        print(f"pagando chave {self.chave}, valor {valor} com pix")
-
-class Pagamento:
-    def __init__(self, valor: float, descricao: str):
+    def __init__(self, valor: float, descricao: str, metodo):
         self.valor = valor
         self.descricao = descricao
         self.metodo = metodo
+
+    @abstractmethod
+    def processar_pag(self, valor: float):
+        pass
 
     def pagar(self):
         self.metodo.processar_pag(self.valor)
 
     def resumo(self):
-        return f" Pagamento de R$ {self.valor}: {self.descricao}"
+        return f" Pagamento de R$ {self.valor} descrição: {self.descricao}"
 
     def validar_valor(self):
         if self.valor <= 0:
-            raise ValueError("valor inválido")
+            raise ValueError("Erro de pagamento, valor precisa ser maior que 0")
         
     def processar(self):
         self.validar_valor()
         self.resumo()
-        self.metodo.processar_pag(self.valor, self.descricao) 
+        self.metodo.processar_pag(self.valor, self.descricao)
 
-class CartaoCredito(Pagamento):
+class MetodoPix(MetodoPag):
+    def __init__(self, chave: str):
+        self.chave = chave
+    def processar_pag(self, valor):
+        print(f"Pagamento realizado para {self.chave}, valor {valor} com pix")
+
+class CartaoCredito(MetodoPag):
     def __init__(self, num: int, nome: str, limite: float, valor: float, descricao: str):
         super().__init__(valor, descricao)
         self.num = num
@@ -51,19 +50,12 @@ class CartaoCredito(Pagamento):
             return
         self.limite -= self.valor
 
-def processar_pagamentos(pagamentos: list[Pagamento]):
-    for pag in pagamentos:
-        pag.validar_valor()
-        print(pag.resumo())
-        pag.processar()
-        if isinstance(pag, CartaoCredito):
-            print(pag.get_limite())
-
-class Pix(Pagamento):
-    def __init__(self, chave: str):
+class Pix(MetodoPag):
+    def __init__(self, chave: str, valor, descricao):
         super().__init__(valor, descricao)
 
         self.chave: str = chave
+        
         def getChave(self):
             return self.chave
 
@@ -75,7 +67,7 @@ class Pix(Pagamento):
             self.limite -= self.valor
         print("Pagamento realizado para {self.banco} e chave {self.chave}")
 
-class Boleto(Pagamento):
+class Boleto(MetodoPag):
     def __init__(self, codigo_barras, vencimento: str, valor, descricao):
         super().__init__(valor, descricao)
         self.codigo_barras = codigo_barras
@@ -87,6 +79,14 @@ class Boleto(Pagamento):
         self.metodo.processar_pag()
         print(f"Boleto gerado. Aguerdando pagammento...")
 
+def processar_pagamentos(pagamentos: list[MetodoPag]):
+    for pag in pagamentos:
+        pag.validar_valor()
+        print(pag.resumo())
+        pag.processar()
+        if isinstance(pag, CartaoCredito):
+            print(pag.get_limite())
+
 pix = MetodoPix("pinheiro@gmail.com")
-pag = Pagamento(22.0, "Entrada cinema", pix)
+pag = Pagamento(12.00, "ingresso para cinema", pix)
 pag.pagar()
